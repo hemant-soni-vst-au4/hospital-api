@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2021-02-26
+  start_time: 2021-02-26 21:16:55
+  end_date: 2021-02-26
+  end_time: 2021-02-26 21:16:55
+  interval: 1
+  doctor: one
+
+two:
+  start_date: 2021-02-26
+  start_time: 2021-02-26 21:16:55
+  end_date: 2021-02-26
+  end_time: 2021-02-26 21:16:55
+  interval: 1
+  doctor: two
