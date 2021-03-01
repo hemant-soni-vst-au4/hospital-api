@@ -1,5 +1,6 @@
 class Api::V1::PatientsController < ApplicationController
-  
+    before_action :authorize, only: %i[auto_login update destroy]
+    before_action :set_patient, only: %i[show update destroy] 
     # GET /patients
     def index
       @patients = Patient.all
@@ -17,12 +18,28 @@ class Api::V1::PatientsController < ApplicationController
         @patient = Patient.create(patient_params)
 
         if @patient.valid?
-        render json: { patient: @patient }
+            token = encode_token({ patient_id: @patient.id })
+            render json: { patient: @patient, token: token }
         else
-        render json: { error: 'Email already registered' }
+            render json: { error: 'Email already registered' }
         end
     end
 
+    def login
+        @patient = Patient.find_by(email: patient_params[:email])
+    
+        if @patient&.authenticate(patient_params[:password])
+          token = encode_token({ patient_id: @patient.id })
+          render json: { patient: @patient, token: token }
+        else
+          render json: { error: 'Invalid username or password' }
+        end
+    end
+    
+    def auto_login
+        token = encode_token({ patient_id: @patient.id })
+        render json: { patient: @patient, token: token }
+    end
 
     # PATCH/PUT /patients/1
     def update
