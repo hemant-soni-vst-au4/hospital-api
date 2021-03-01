@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_150952) do
+ActiveRecord::Schema.define(version: 2021_03_01_152338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 2021_03_01_150952) do
     t.bigint "doctor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "schedule_id"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["schedule_id"], name: "index_appointments_on_schedule_id", unique: true
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_150952) do
   create_table "schedules", force: :cascade do |t|
     t.string "date"
     t.string "time"
-    t.integer "duration"
+    t.string "duration"
     t.bigint "doctor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,5 +60,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_150952) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "patients"
+  add_foreign_key "appointments", "schedules"
   add_foreign_key "schedules", "doctors"
 end
