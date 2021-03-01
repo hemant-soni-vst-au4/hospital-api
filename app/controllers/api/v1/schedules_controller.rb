@@ -3,18 +3,15 @@ class Api::V1::SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[show update destroy]
   before_action :set_doctor, only: %i[index create]
 
-  # GET /schedules
   def index
     @schedules = @doctor.schedules
     render json: @schedules
   end
 
-  # GET /schedules/1
   def show
     render json: @schedule
   end
 
-  # POST /schedules
   def create
     start_date = Time.parse(schedule_params[:start_date]).to_i
     end_date = Time.parse(schedule_params[:end_date]).to_i
@@ -37,7 +34,6 @@ class Api::V1::SchedulesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /schedules/1
   def update
     if @schedule.update(schedule_params)
       render json: @schedule
@@ -46,14 +42,12 @@ class Api::V1::SchedulesController < ApplicationController
     end
   end
 
-  # DELETE /schedules/1
   def destroy
     @schedule.destroy
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_schedule
     @schedule = Schedule.find(params[:id])
   end
@@ -62,7 +56,6 @@ class Api::V1::SchedulesController < ApplicationController
     @doctor = Doctor.find(params[:doctor_id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def schedule_params
     params.require(:schedule).permit(:start_date, :start_time, :end_date, :end_time, :duration, :doctor_id)
   end
