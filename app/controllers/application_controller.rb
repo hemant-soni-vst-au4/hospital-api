@@ -1,3 +1,4 @@
+# rubocop:disable Style/GuardClause
 class ApplicationController < ActionController::API
   before_action :authorize
 
@@ -38,4 +39,4 @@ class ApplicationController < ActionController::API
     render json: { message: 'Please log in' }, status: :unauthorized unless user_logged_in?
   end
 end
-# rubocop:enable Style/GuardClause, Style/DoubleNegation
+# rubocop:enable Style/GuardClause
