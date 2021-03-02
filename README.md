@@ -1,4 +1,4 @@
-# DocApp API - An API for the Doctor Appointment booking system
+# Hospital API - An API for the Doctor Appointment booking system
 
 > An API for the Doctor Appointment booking system where patients can book the doctor appointment in advance. Also, each doctor can login and create their own schedules.
 
@@ -35,7 +35,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://docapp-api.herokuapp.com/)
+[Live Demo Link]()
 
 ## Getting Started
 
