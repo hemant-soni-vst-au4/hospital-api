@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |_repo| "https://github.com/#{hemant - soni - vst - au4 / hospital - api}.git" }
 
-ruby '3.0.0'
+ruby '2.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
