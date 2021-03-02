@@ -35,7 +35,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://docapp-api.herokuapp.com/)
+[Live Demo Link](https://secret-badlands-48169.herokuapp.com/)
 
 ## Getting Started
 
