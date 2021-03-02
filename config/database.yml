@@ -88,5 +88,6 @@ test:
 production:
   <<: *default
   database: hospital_api_production
-  username: hospital_api
-  password: <%= ENV['HOSPITAL_API_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: 283476
+
